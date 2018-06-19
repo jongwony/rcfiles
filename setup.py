@@ -38,7 +38,7 @@ def common():
     cp(get_path('.zshrc', home=True), get_path('.zshrc.backup',
        home=True))
     cp(get_path('zshrc'), get_path('.zshrc', home=True))
-    sh('. ~/.zshrc')
+    sh('zsh ~/.zshrc')
 
     # cp(get_path('.ipython', 'profile_default', 'ipython_config.py', home=True),
     #    get_path('.ipython', 'profile_default', 'ipython_config.py.backup',
@@ -79,9 +79,9 @@ def linux():
     else:
         # sh('apt update')
         # sh('apt install zsh')
-        # sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+        sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
         sh('git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions')
-        sh('. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
+        sh('zsh ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
         sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
 
 
