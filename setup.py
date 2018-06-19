@@ -1,20 +1,22 @@
 import os
 import shutil
 import platform
-import logging
 from functools import wraps
 
 
-def log(func):
+def wrap(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         print(func.__name__, *args, **kwargs)
-        return func(*args, **kwargs)
+        try:
+            return func(*args, **kwargs)
+        except FileNotFoundError:
+            pass
     return wrapper
 
 
-sh = log(os.popen)
-cp = log(shutil.copy2)
+sh = wrap(os.popen)
+cp = wrap(shutil.copy2)
 
 
 def get_path(*path, home=False):
@@ -88,5 +90,5 @@ def linux():
 
 if __name__ == '__main__':
     uname = platform.system()
-    exec(uname.lower() + '()')
+    eval(uname.lower() + '()')
 
