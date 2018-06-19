@@ -1,62 +1,40 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xuyuanp/nerdtree-git-plugin'
-
 Plugin 'w0rp/ale'
 Plugin 'valloric/youcompleteme'
 Plugin 'craigemery/vim-autotag'
-
-Plugin 'nvie/vim-flake8'
-
 Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
 
-let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
-let g:ctrlp_custom_ignore='node_modules'
-let g:ctrlp_working_path_mode=0
-
-"iterm2 on osx insert mode caret
-"http://vim.wikia.com/wiki/change_cursor_shape_in_different_modes
-let &t_SI = "\<esc>]50;CursorShape=1\x7"
-let &t_SR = "\<esc>]50;CursorShape=2\x7"
-let &t_EI = "\<esc>]50;CursorShape=0\x7"
-
-"ale linter
-let g:ale_sign_column_always=1
-let g:ale_echo_msg_error_str = 'e'
-let g:ale_echo_msg_warning_str = 'w'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-
-set nu
+let python_highlight_all=1
 syntax on
-colorscheme onedark
-set backspace=indent,eol,start
-set encoding=utf-8
-set mouse=a
-set hlsearch
-
-highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
-
+set nu
 set tabstop=4
 set softtabstop=4
 set expandtab
 set shiftwidth=4
-set textwidth=79
 set autoindent
 set fileformat=unix
+set encoding=utf-8
+set clipboard=unnamed
+set mouse=a
+set backspace=indent,eol,start
+set hlsearch
+
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 
 au BufNewFile,BufRead *.html,*.css,*.js
     \ set tabstop=2 |
@@ -75,9 +53,23 @@ au BufNewFile,BufRead *.md,*.markdown
 au FocusGained,CursorHold,CursorMoved *.md,*.markdown checktime
 au BufEnter,CursorHoldI,CursorMovedI *.md,*.markdown update
 
+let g:ctrlp_custom_ignore='node_modules'
+let g:ctrlp_working_path_mode=0
+
+"ale linter
+let g:ale_sign_column_always=1
+let g:ale_echo_msg_error_str = 'e'
+let g:ale_echo_msg_warning_str = 'w'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 "https://standardjs.com/
 "autocmd bufwritepost *.js silent !standard %
 "set autoread
+
+let g:NERDTreeDirArrowExpandable = '>'
+let g:NERDTreeDirArrowCollapsible = 'v'
+
+let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
 
 map <C-n> :NERDTreeToggle<CR>
 

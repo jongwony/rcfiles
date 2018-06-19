@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -54,11 +54,11 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python pylint zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+# fpath=(/usr/local/share/zsh-completions $fpath)
 
 # User configuration
 
@@ -68,11 +68,11 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
-else
-   export EDITOR='mvim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#    export EDITOR='vim'
+# else
+#    export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -89,19 +89,17 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-HOMEBREW_ACCESS_TOKEN=9ebca02a11615a3a86422513a587d3a114bf0b1c
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 ###########
 # exports #
 ###########
-export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-#export PATH="/usr/local/opt/node@6/bin:/Applications/MySQLWorkbench.app/Contents/MacOS:$PATH"
-#export MPLBACKEND="module://itermplot"
-export MPLBACKEND="TkAgg"
-export NVM_DIR="/Users/jongwon/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+# export PATH="/usr/local/opt/node@6/bin:/Applications/MySQLWorkbench.app/Contents/MacOS:$PATH"
+# export MPLBACKEND="module://itermplot"
+# export MPLBACKEND="TkAgg"
+# export NVM_DIR="/Users/jongwon/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export REPORTTIME=0
 
 PROMPT='%D{%m-%d %H:%M} %{$fg[cyan]%}%c $(git_prompt_info)${ret_status}%{$reset_color%}'
@@ -109,18 +107,14 @@ PROMPT='%D{%m-%d %H:%M} %{$fg[cyan]%}%c $(git_prompt_info)${ret_status}%{$reset_
 #########
 # alias #
 #########
-# Change Dir
-alias bucket="~/github/private/personal/myCloud"
-alias cdrz="~/github/public/personal/RestrictedZone"
-alias cdkd="~/github/private/personal/kreditdata"
 
 # Application alias
 alias vi=vim
 
 # Bookmark
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
-alias trans="python ~/github/public/personal/RestrictedZone/hypertrans/main.py"
-alias setcal="python ~/github/public/personal/RestrictedZone/console-calendar/console-calendar.py"
+# alias trans="python ~/github/public/personal/RestrictedZone/hypertrans/main.py"
+# alias setcal="python ~/github/public/personal/RestrictedZone/console-calendar/console-calendar.py"
 
 ############
 # function #
@@ -129,38 +123,16 @@ function ipy () {
 	if [ -e ~/gvenv/bin/activate ]; then
 		. ~/gvenv/bin/activate;
 	fi
-	MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
+	ipython "$@"
 }
 function suipy () {
-    sudo sh -c '. ~/gvenv/bin/activate; MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"'
+    sudo sh -c '. ~/gvenv/bin/activate; ipython "$@"'
 }
 function chpwd () { ls }
 function mysqlq () { mysql -udev_master -hdev-mysql.ckpqcnrgsdmm.ap-northeast-2.rds.amazonaws.com -P3306 -p --local-infile --show-warnings -- "$1" }
 function mysql2csv () { mysql -udev_master -hdev-mysql.ckpqcnrgsdmm.ap-northeast-2.rds.amazonaws.com -P3306 -p -B --database="$1" --execute="$2" --default-character-set='utf8' --delimiter='|' > "$3"}
-function dbb () {
-	if [ ! -f "$1" ]; then
-		echo "$1 not found"
-		touch "$1"
-	fi
-	open -a "db browser for sqlite" "$1"
-}
-function charm () {
-	if [ ! -f "$1" ]; then
-		echo "$1 not found"
-		touch "$1"
-	fi
-	open -a "pycharm" "$1"
-}
 function gbsize () {
 	ls -lSr "$1" | awk '{ printf "%s %s %s\n", $8, $9, $5 }' | uniq -c -f 2 | head -n "$2" | sed '1d'
-}
-function typora () {
-	if [ ! -f "$1" ]; then
-		echo "$1 not found"
-		touch "$1"
-	fi
-	open -g -a "Typora" "$1"
-	vim "$1"
 }
 function today () {
 	date +%Y%m%d
