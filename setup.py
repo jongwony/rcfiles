@@ -84,13 +84,17 @@ def linux():
         sh('zsh ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
         sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
 
-
-        # # FIXME: IPython settings
+        with open(get_path('.bashrc', home=True), 'a') as f:
+            f.write('''
+# Switch to ZSH shell
+if test -t 1; then
+    exec zsh
+fi''')
+        # FIXME: IPython settings
         # sh('pip install virtualenv')
         # sh('virtualenv -p python3 ~/gvenv')
         # sh('. ~/gvenv/bin/activate')
         # sh('pip install ipython[all]')
-        pass
 
     common()
 
