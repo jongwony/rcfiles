@@ -30,6 +30,18 @@ def common():
     """
     rc file copy
     """
+    sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+    sh('git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions')
+    sh('zsh ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
+    sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
+
+    with open(get_path('.bashrc', home=True), 'a') as f:
+        f.write('''
+# Switch to ZSH shell
+if test -t 1; then
+    exec zsh
+fi''')
+
     cp(get_path('.vimrc', home=True), get_path('.vimrc.backup',
        home=True))
     cp(get_path('vimrc'), get_path('.vimrc', home=True))
@@ -51,55 +63,31 @@ def darwin():
     """
     OSX Setup
     """
-    if os.path.exists(get_path(platform.system().lower(), 'setup.sh')):
-        sh('bash setup.sh')
-    else:
-        sh('brew install zsh')
-        sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
-        sh('git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions')
-        sh('. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
-        sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
-
-        # FIXME: IPython settings
-        sh('pip install virtualenv')
-        sh('virtualenv -p python3 ~/gvenv')
-        sh('. ~/gvenv/bin/activate')
-        sh('pip install ipython[all]')
-        sh('pip install itermplot')
-
     common()
+
+    # FIXME: IPython settings
+    sh('pip install virtualenv')
+    sh('virtualenv -p python3 ~/gvenv')
+    sh('. ~/gvenv/bin/activate')
+    sh('pip install ipython[all]')
+    sh('pip install itermplot')
 
 
 def linux():
     """
-    Ubuntu
+    Ubuntu, Android etc.
     """
-    if os.path.exists(get_path(platform.system().lower(), 'setup.sh')):
-        sh('bash setup.sh')
-    else:
-        # sh('apt update')
-        # sh('apt install zsh')
-        sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
-        sh('git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions')
-        sh('zsh ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
-        sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
-
-        with open(get_path('.bashrc', home=True), 'a') as f:
-            f.write('''
-# Switch to ZSH shell
-if test -t 1; then
-    exec zsh
-fi''')
-        # FIXME: IPython settings
-        # sh('pip install virtualenv')
-        # sh('virtualenv -p python3 ~/gvenv')
-        # sh('. ~/gvenv/bin/activate')
-        # sh('pip install ipython[all]')
-
     common()
+
+    # FIXME: IPython settings
+    # sh('pip install virtualenv')
+    # sh('virtualenv -p python3 ~/gvenv')
+    # sh('. ~/gvenv/bin/activate')
+    # sh('pip install ipython[all]')
 
 
 if __name__ == '__main__':
     uname = platform.system()
+    # sh('sudo sh sudo_setup.sh')
     eval(uname.lower() + '()')
 
