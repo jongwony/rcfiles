@@ -55,6 +55,9 @@ def darwin():
     else:
         sh('brew install zsh')
         sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+        sh('git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions')
+        sh('. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
+        sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
 
         # FIXME: IPython settings
         sh('pip install virtualenv')
@@ -74,9 +77,12 @@ def linux():
         sh('bash setup.sh')
     else:
         # sh('apt update')
-
         # sh('apt install zsh')
-        # sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+        sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+        sh('git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions')
+        sh('. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
+        sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
+
 
         # # FIXME: IPython settings
         # sh('pip install virtualenv')
