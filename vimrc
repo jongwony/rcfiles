@@ -10,7 +10,6 @@ Plugin 'nvie/vim-flake8'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xuyuanp/nerdtree-git-plugin'
-Plugin 'w0rp/ale'
 Plugin 'craigemery/vim-autotag'
 Plugin 'pangloss/vim-javascript'
 

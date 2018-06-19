@@ -33,7 +33,7 @@ def common():
     cp(get_path('.vimrc', home=True), get_path('.vimrc.backup',
        home=True))
     cp(get_path('vimrc'), get_path('.vimrc', home=True))
-    sh('vim +PlugInstall +qall')
+    sh('vim +PluginInstall +qall')
 
     cp(get_path('.zshrc', home=True), get_path('.zshrc.backup',
        home=True))
