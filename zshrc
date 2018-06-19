@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export REPORTTIME=0
 
-PROMPT='%D{%m-%d %H:%M} %{$fg[cyan]%}%c $(git_prompt_info)${ret_status}%{$reset_color%}'
+PROMPT='%{$fg_bold[yellow]%}%n%{$reset_color%} %{$fg_bold[white]%}%D{%m-%d %H:%M}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
 
 #########
 # alias #

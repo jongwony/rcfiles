@@ -1,6 +1,7 @@
 import os
 import shutil
 import platform
+from subprocess import Popen
 from functools import wraps
 
 
@@ -15,7 +16,7 @@ def wrap(func):
     return wrapper
 
 
-sh = wrap(os.popen)
+sh = wrap(lambda x: Popen(x, shell=True).communicate())
 cp = wrap(shutil.copy2)
 
 
@@ -78,7 +79,7 @@ def linux():
     else:
         # sh('apt update')
         # sh('apt install zsh')
-        sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+        # sh('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
         sh('git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions')
         sh('. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh')
         sh('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
