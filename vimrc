@@ -54,12 +54,6 @@ au BufEnter,CursorHoldI,CursorMovedI *.md,*.markdown update
 let g:ctrlp_custom_ignore='node_modules'
 let g:ctrlp_working_path_mode=0
 
-"ale linter
-let g:ale_sign_column_always=1
-let g:ale_echo_msg_error_str = 'e'
-let g:ale_echo_msg_warning_str = 'w'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
 "https://standardjs.com/
 "autocmd bufwritepost *.js silent !standard %
 "set autoread

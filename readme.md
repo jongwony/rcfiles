@@ -4,7 +4,7 @@ Platform-free setup rc files
 
 ## Coverage
 
-- AWS Ubuntu ✓
+- AWS Ubuntu :white_check_mark:
 
 ## Usage
 

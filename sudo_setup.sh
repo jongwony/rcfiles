@@ -1,3 +1,4 @@
 # permission required package
-apt update
-apt install zsh
+# docker need apt-get
+apt-get update
+apt-get install -y zsh
