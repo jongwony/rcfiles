@@ -21,3 +21,13 @@ Platform-free setup rc files
 Create `test` user and rc test.
 
 → Check md files
+
+## Docker
+
+```
+docker build -t py3 .
+docker run -it py3
+docker container ls -all
+docker start <CONTAINER_ID>
+docker attach <CONTAINER_ID>
+```

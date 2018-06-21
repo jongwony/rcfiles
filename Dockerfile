@@ -11,8 +11,11 @@ ADD . /app
 ENV DEBIAN_FRONTEND noninteractive
 
 # install needed packages
-RUN sh sudo_setup.sh
+RUN apt-get update -y
+RUN apt-get install vim -y
+RUN apt-get install zsh -y
 RUN pip install ipython[all]
+RUN python setup.py
 
 # Setup container
-CMD ["python", "setup.py"]
+CMD ["/bin/zsh"]
