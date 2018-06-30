@@ -12,6 +12,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'craigemery/vim-autotag'
 Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-fugitive'
+Plugin 'shime/vim-livedown'
+Plugin 'junegunn/fzf'
 
 call vundle#end()
 filetype plugin indent on
@@ -43,7 +46,6 @@ au BufNewFile,BufRead *.html,*.css,*.js
 au BufNewFile,BufRead *.md,*.markdown
     \ set noswapfile |
     \ set linespace=4 |
-    \ set textwidth=60 |
     \ set filetype=markdown |
     \ set nowrap |
     \ set autoread
@@ -60,8 +62,17 @@ let g:ctrlp_working_path_mode=0
 
 let g:NERDTreeDirArrowExpandable = '>'
 let g:NERDTreeDirArrowCollapsible = 'v'
-
 let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
-
 map <C-n> :NERDTreeToggle<CR>
 
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1
+" the port on which Livedown server will run
+let g:livedown_port = 1337
+" the browser to use
+let g:livedown_browser = "chrome"
+nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
+
+map <C-p> :FZF<CR>
