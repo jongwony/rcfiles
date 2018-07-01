@@ -54,7 +54,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,11 +98,14 @@ source $ZSH/oh-my-zsh.sh
 # export PATH="/usr/local/opt/node@6/bin:/Applications/MySQLWorkbench.app/Contents/MacOS:$PATH"
 # export MPLBACKEND="module://itermplot"
 # export MPLBACKEND="TkAgg"
+export PATH=$PATH:$HOME/bin
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 # export NVM_DIR="/Users/jongwon/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export REPORTTIME=0
 
-PROMPT='%{$fg_bold[yellow]%}%n%{$reset_color%} %{$fg_bold[white]%}%D{%m-%d %H:%M}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
+PROMPT='%{$fg_bold[white]%}%D{%m-%d %H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
 
 #########
 # alias #
@@ -123,7 +126,7 @@ function ipy () {
 	if [ -e ~/gvenv/bin/activate ]; then
 		. ~/gvenv/bin/activate;
 	fi
-	ipython "$@"
+	MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
 }
 function suipy () {
     sudo sh -c '. ~/gvenv/bin/activate; ipython "$@"'
