@@ -91,18 +91,16 @@ source $ZSH/oh-my-zsh.sh
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# vim mode zsh
+bindkey -v
+
 ###########
 # exports #
 ###########
-# export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-# export PATH="/usr/local/opt/node@6/bin:/Applications/MySQLWorkbench.app/Contents/MacOS:$PATH"
-# export MPLBACKEND="module://itermplot"
 # export MPLBACKEND="TkAgg"
 export PATH=$PATH:$HOME/bin
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
-# export NVM_DIR="/Users/jongwon/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export REPORTTIME=0
 
 PROMPT='%{$fg_bold[white]%}%D{%m-%d %H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
@@ -140,3 +138,5 @@ function gbsize () {
 function today () {
 	date +%Y%m%d
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
