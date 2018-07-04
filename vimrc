@@ -15,12 +15,15 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shime/vim-livedown'
 Plugin 'junegunn/fzf'
+Plugin 'joshdick/onedark.vim'
 
 call vundle#end()
 filetype plugin indent on
 
 let python_highlight_all=1
 syntax on
+colorscheme onedark
+
 set nu
 set tabstop=4
 set softtabstop=4
