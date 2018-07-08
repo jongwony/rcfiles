@@ -5,9 +5,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'valloric/youcompleteme'
+Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'craigemery/vim-autotag'
@@ -40,6 +41,10 @@ set hlsearch
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 
+au BufNewFile,BufRead *
+    \ set noswapfile |
+    \ set autoread
+
 au BufNewFile,BufRead *.html,*.css,*.js
     \ set tabstop=2 |
     \ set softtabstop=2 |
@@ -47,21 +52,13 @@ au BufNewFile,BufRead *.html,*.css,*.js
     \ set nowrap
 
 au BufNewFile,BufRead *.md,*.markdown
-    \ set noswapfile |
     \ set linespace=4 |
     \ set filetype=markdown |
-    \ set nowrap |
-    \ set autoread
+    \ set nowrap
 
-au FocusGained,CursorHold,CursorMoved *.md,*.markdown checktime
-au BufEnter,CursorHoldI,CursorMovedI *.md,*.markdown update
+au FocusGained,CursorHold,CursorMoved * checktime
+au BufEnter,CursorHoldI,CursorMovedI * update
 
-let g:ctrlp_custom_ignore='node_modules'
-let g:ctrlp_working_path_mode=0
-
-"https://standardjs.com/
-"autocmd bufwritepost *.js silent !standard %
-"set autoread
 
 let g:NERDTreeDirArrowExpandable = '>'
 let g:NERDTreeDirArrowCollapsible = 'v'
@@ -78,4 +75,17 @@ let g:livedown_port = 1337
 let g:livedown_browser = "chrome"
 nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
 
+
 map <C-p> :FZF<CR>
+
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pylint']
+
