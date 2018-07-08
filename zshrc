@@ -103,7 +103,7 @@ export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 export REPORTTIME=0
 
-PROMPT='%{$fg_bold[white]%}%D{%m-%d %H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
+PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
 
 # activate global virtualenv
 if [ -e ~/gvenv/bin/activate ]; then
@@ -145,4 +145,5 @@ function today () {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 

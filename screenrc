@@ -1,0 +1,8 @@
+shell /usr/local/bin/zsh
+
+autodetach on
+startup_message off
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{wk}%-w%{kw}%t[%n]%{-}%+w %=%{G} %H %{..Y} %Y-%m-%d"
+

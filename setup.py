@@ -43,6 +43,9 @@ if test -t 1; then
     exec zsh
 fi''')
 
+    cp(get_path('.screenrc', home=True), get_path('.screenrc.backup', home=True))
+    cp(get_path('screenrc'), get_path('.screenrc', home=True))
+
     cp(get_path('.vimrc', home=True), get_path('.vimrc.backup',
        home=True))
     cp(get_path('vimrc'), get_path('.vimrc', home=True))
