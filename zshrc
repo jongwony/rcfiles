@@ -98,7 +98,7 @@ bindkey -v
 # exports #
 ###########
 # export MPLBACKEND="TkAgg"
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 export REPORTTIME=0
@@ -145,5 +145,4 @@ function today () {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
