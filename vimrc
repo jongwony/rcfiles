@@ -8,10 +8,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'valloric/youcompleteme'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xuyuanp/nerdtree-git-plugin'
-Plugin 'craigemery/vim-autotag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shime/vim-livedown'
@@ -59,7 +57,6 @@ au BufNewFile,BufRead *.md,*.markdown
 au FocusGained,CursorHold,CursorMoved * checktime
 au BufEnter,CursorHoldI,CursorMovedI * update
 
-
 let g:NERDTreeDirArrowExpandable = '>'
 let g:NERDTreeDirArrowCollapsible = 'v'
 let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
@@ -77,15 +74,4 @@ nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
 
 
 map <C-p> :FZF<CR>
-
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['pylint']
 
