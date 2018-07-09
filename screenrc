@@ -1,4 +1,4 @@
-shell /usr/local/bin/zsh
+shell $SHELL
 
 autodetach on
 startup_message off
@@ -6,3 +6,5 @@ hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{wk}%-w%{kw}%t[%n]%{-}%+w %=%{G} %H %{..Y} %Y-%m-%d"
 
+bind c stuff "screen -l^M"
+bind ^C stuff "screen -l^M"
