@@ -94,6 +94,13 @@ source $ZSH/oh-my-zsh.sh
 # vim mode zsh
 bindkey -v
 
+PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
+
+# activate global virtualenv
+if [ -e ~/gvenv/bin/activate ]; then
+    . ~/gvenv/bin/activate;
+fi
+
 ###########
 # exports #
 ###########
@@ -102,13 +109,10 @@ export PATH=$PATH:$HOME/.local/bin
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 export REPORTTIME=0
-
-PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
-
-# activate global virtualenv
-if [ -e ~/gvenv/bin/activate ]; then
-    . ~/gvenv/bin/activate;
-fi
+export MEMO="$HOME/Documents/md"
+export SQL="$HOME/Documents/sql"
+export MY="$HOME/github/private"
+export COMPANY="$HOME/github/company"
 
 #########
 # alias #
@@ -116,11 +120,10 @@ fi
 
 # Application alias
 alias vi=vim
+alias memo="vim $MEMO/`today`.md"
 
 # Bookmark
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
-# alias trans="python ~/github/public/personal/RestrictedZone/hypertrans/main.py"
-# alias setcal="python ~/github/public/personal/RestrictedZone/console-calendar/console-calendar.py"
 
 ############
 # function #
