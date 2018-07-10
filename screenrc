@@ -4,7 +4,7 @@ autodetach on
 startup_message off
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%{wk}%-w%{kw}%t[%n]%{-}%+w %=%{G} %H %{..Y} %Y-%m-%d"
+hardstatus string "%{WK}%-w%{KW}%t[%n]%{-}%+w %=%{G} %H %{..Y} %Y-%m-%d"
 
 bind ^C stuff "screen -l^M"
 bind c stuff "screen -l^M"
