@@ -14,6 +14,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'shime/vim-livedown'
 Plugin 'junegunn/fzf'
 Plugin 'joshdick/onedark.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-repeat'
 
 call vundle#end()
 filetype plugin indent on
@@ -71,6 +73,7 @@ let g:livedown_port = 1337
 let g:livedown_browser = "chrome"
 nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
 
+nnoremap gb :Gblame<CR>
 
 map <C-p> :FZF<CR>
 
