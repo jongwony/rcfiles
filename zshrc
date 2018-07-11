@@ -135,7 +135,7 @@ export NVM_DIR="$HOME/.nvm"
 export REPORTTIME=0
 export memo="$HOME/Documents/md"
 export snip="$HOME/Documents/snip"
-export my="$HOME/github/private"
+export me="$HOME/github/private"
 export company="$HOME/github/company"
 
 #########
