@@ -13,6 +13,8 @@ bind ^S split
 bind s split
 bind ^X remove
 bind x remove
+bind ^V split -v
+bind v split -v
 
 bindkey J stuff ^D
 bindkey K stuff ^U
