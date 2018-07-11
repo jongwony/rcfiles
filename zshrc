@@ -101,30 +101,6 @@ if [ -e ~/gvenv/bin/activate ]; then
     . ~/gvenv/bin/activate;
 fi
 
-###########
-# exports #
-###########
-# export MPLBACKEND="TkAgg"
-export PATH=$PATH:$HOME/.local/bin
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-export REPORTTIME=0
-export MEMO="$HOME/Documents/md"
-export SQL="$HOME/Documents/sql"
-export MY="$HOME/github/private"
-export COMPANY="$HOME/github/company"
-
-#########
-# alias #
-#########
-
-# Application alias
-alias vi=vim
-alias memo="vim $MEMO/`today`.md"
-
-# Bookmark
-alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
-
 ############
 # function #
 ############
@@ -148,4 +124,28 @@ function today () {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+###########
+# exports #
+###########
+# export MPLBACKEND="TkAgg"
+export PATH=$PATH:$HOME/.local/bin
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+export REPORTTIME=0
+export memo="$HOME/Documents/md"
+export snip="$HOME/Documents/snip"
+export my="$HOME/github/private"
+export company="$HOME/github/company"
+
+#########
+# alias #
+#########
+
+# Application alias
+alias vi=vim
+alias memo="vim $MEMO/`today`.md"
+
+# Bookmark
+alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
 
