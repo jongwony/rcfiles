@@ -1,14 +1,22 @@
 shell $SHELL
 
+defscrollback 5000
 autodetach on
 startup_message off
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{WK}%-w%{KW}%t[%n]%{-}%+w %=%{G} %H %{..Y} %Y-%m-%d"
 
-bind ^C stuff "screen -l^M"
-bind c stuff "screen -l^M"
+bind ^C login
+bind c login
 bind ^S split
 bind s split
 bind ^X remove
 bind x remove
+
+bindkey J stuff ^D
+bindkey K stuff ^U
+
+termcapinfo xterm* ti@:te@
+
+mousetrack on

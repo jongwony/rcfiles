@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/bin:/usr/local/bin:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -96,11 +96,6 @@ bindkey -v
 
 PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
 
-# activate global virtualenv
-if [ -e ~/gvenv/bin/activate ]; then
-    . ~/gvenv/bin/activate;
-fi
-
 ############
 # function #
 ############
@@ -114,13 +109,16 @@ function suipy () {
     sudo sh -c '. ~/gvenv/bin/activate; ipython "$@"'
 }
 function chpwd () { ls }
-function mysqlq () { mysql -udev_master -hdev-mysql.ckpqcnrgsdmm.ap-northeast-2.rds.amazonaws.com -P3306 -p --local-infile --show-warnings -- "$1" }
-function mysql2csv () { mysql -udev_master -hdev-mysql.ckpqcnrgsdmm.ap-northeast-2.rds.amazonaws.com -P3306 -p -B --database="$1" --execute="$2" --default-character-set='utf8' --delimiter='|' > "$3"}
 function gbsize () {
 	ls -lSr "$1" | awk '{ printf "%s %s %s\n", $8, $9, $5 }' | uniq -c -f 2 | head -n "$2" | sed '1d'
 }
 function today () {
 	date +%Y%m%d
+}
+function posting() {
+    file=`date +%Y%m%d`
+    echo "date: `date +%Y-%m-%d\ %H:%M:%S`" >> $post/$file.md
+    vim $post/$file.md
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -137,6 +135,8 @@ export memo="$HOME/Documents/md"
 export snip="$HOME/Documents/snip"
 export me="$HOME/github/private"
 export company="$HOME/github/company"
+export post="$HOME/github/private/flask_blog/pages/posts"
+
 
 #########
 # alias #
@@ -144,8 +144,10 @@ export company="$HOME/github/company"
 
 # Application alias
 alias vi=vim
-alias memo="vim $MEMO/`today`.md"
+alias memo="vim $memo/`today`.md"
 
 # Bookmark
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
 
+# pyenv
+eval "$(pyenv init -)"
