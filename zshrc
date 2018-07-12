@@ -109,13 +109,10 @@ PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_
 # function #
 ############
 function ipy () {
-	if [ -e ~/gvenv/bin/activate ]; then
-		. ~/gvenv/bin/activate;
-	fi
 	MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
 }
 function suipy () {
-    sudo sh -c '. ~/gvenv/bin/activate; ipython "$@"'
+    sudo sh -c 'ipython "$@"'
 }
 function chpwd () { ls }
 function gbsize () {
