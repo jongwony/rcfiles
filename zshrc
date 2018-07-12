@@ -1,5 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/bin:/usr/local/bin:$HOME/.local/bin
+export REPORTTIME=0
+
+# pyenv
+eval "$(pyenv init -)"
+export PYENV_VERSION='gvenv'
+
+# export MPLBACKEND="TkAgg"
+# export NVM_DIR="$HOME/.nvm"
+# . "/usr/local/opt/nvm/nvm.sh"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -126,11 +135,6 @@ function posting() {
 ###########
 # exports #
 ###########
-# export MPLBACKEND="TkAgg"
-export PATH=$PATH:$HOME/.local/bin
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-export REPORTTIME=0
 export memo="$HOME/Documents/md"
 export snip="$HOME/Documents/snip"
 export me="$HOME/github/private"
@@ -149,5 +153,3 @@ alias memo="vim $memo/`today`.md"
 # Bookmark
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
 
-# pyenv
-eval "$(pyenv init -)"
