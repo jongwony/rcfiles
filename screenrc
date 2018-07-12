@@ -16,9 +16,6 @@ bind x remove
 bind ^V split -v
 bind v split -v
 
-bindkey J stuff ^D
-bindkey K stuff ^U
-
 termcapinfo xterm* ti@:te@
 
 mousetrack on
