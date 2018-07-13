@@ -8,3 +8,4 @@ venv2/
 *.sqlite3
 *.zip
 *.tar
+*.log
