@@ -40,7 +40,7 @@ set hlsearch
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 
-au BufNewFile,BufRead *
+au BufNewFile,BufRead *.*
     \ set noswapfile |
     \ set autoread
 
@@ -55,8 +55,8 @@ au BufNewFile,BufRead *.md,*.markdown
     \ set filetype=markdown |
     \ set nowrap
 
-au FocusGained,CursorHold,CursorMoved * checktime
-au BufEnter,CursorHoldI,CursorMovedI * update
+au FocusGained,CursorHold,CursorMoved *.* checktime
+au BufEnter,CursorHoldI,CursorMovedI *.* update
 
 let g:NERDTreeDirArrowExpandable = '>'
 let g:NERDTreeDirArrowCollapsible = 'v'
