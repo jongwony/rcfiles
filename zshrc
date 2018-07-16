@@ -126,7 +126,7 @@ function today () {
 	date +%Y%m%d
 }
 function posting() {
-    file=`date +%Y%m%d`
+    file=`date +%Y-%m-%d`
     echo "date: `date +%Y-%m-%d\ %H:%M:%S`" >> $post/$file.md
     echo "layout: post" >> $post/$file.md
     echo "tags: " >> $post/$file.md
