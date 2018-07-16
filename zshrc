@@ -103,6 +103,10 @@ source $ZSH/oh-my-zsh.sh
 # vim mode zsh
 bindkey -v
 
+# setup for insert mode too
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+bindkey -M viins '^F' history-incremental-pattern-search-forward
+
 PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
 
 ############
@@ -124,6 +128,9 @@ function today () {
 function posting() {
     file=`date +%Y%m%d`
     echo "date: `date +%Y-%m-%d\ %H:%M:%S`" >> $post/$file.md
+    echo "layout: post" >> $post/$file.md
+    echo "tags: " >> $post/$file.md
+    echo "title: " >> $post/$file.md
     vim $post/$file.md
 }
 
