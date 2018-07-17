@@ -1,0 +1,4 @@
+114c114
+< libs="$libs -l "
+---
+> libs="$libs -lmysqlclient -lssl -lcrypto"
