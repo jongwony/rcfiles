@@ -135,6 +135,9 @@ function posting() {
     fi
     vim $post/$file.md
 }
+function temp() {
+    vim -c 'set filetype=python'
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
