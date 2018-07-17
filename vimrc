@@ -32,6 +32,7 @@ set shiftwidth=4
 set autoindent
 set fileformat=unix
 set encoding=utf-8
+set fileencoding=utf-8
 set clipboard=unnamed
 set mouse=a
 set backspace=indent,eol,start
