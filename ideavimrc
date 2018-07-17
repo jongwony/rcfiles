@@ -12,5 +12,3 @@ nnoremap ]e :action GotoNextError<cr>
 nnoremap [e :action GotoPreviousError<cr>
 
 nnoremap gb :action Annotate<cr>
-
-source ~/.ideavimrc
