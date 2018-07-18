@@ -14,7 +14,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'shime/vim-livedown'
 Plugin 'junegunn/fzf'
 Plugin 'joshdick/onedark.vim'
-Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-repeat'
 
 call vundle#end()
