@@ -56,6 +56,9 @@ au BufNewFile,BufRead *.md,*.markdown
     \ set filetype=markdown |
     \ set nowrap
 
+" http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
+au Filetype python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
+
 au FocusGained,CursorHold,CursorMoved *.* checktime
 au BufEnter,CursorHoldI,CursorMovedI *.* update
 
@@ -64,6 +67,7 @@ let g:NERDTreeDirArrowCollapsible = 'v'
 let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
 map <C-n> :NERDTreeToggle<CR>
 
+" npm install -g livedown
 " should markdown preview get shown automatically upon opening markdown buffer
 let g:livedown_autorun = 0
 " should the browser window pop-up upon previewing
@@ -78,3 +82,27 @@ nnoremap gb :Gblame<CR>
 
 map <C-p> :FZF<CR>
 
+function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
+    let ft=toupper(a:filetype)
+    let group='textGroup'.ft
+    if exists('b:current_syntax')
+        let s:current_syntax=b:current_syntax
+        " Remove current syntax definition, as some syntax files (e.g. cpp.vim)
+        " do nothing if b:current_syntax is defined.
+        unlet b:current_syntax
+    endif
+    execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
+    try
+        execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
+    catch
+    endtry
+    if exists('s:current_syntax')
+        let b:current_syntax=s:current_syntax
+    else
+        unlet b:current_syntax
+    endif
+    execute 'syntax region textSnip'.ft.'
+                \ matchgroup='.a:textSnipHl.'
+                \ start="'.a:start.'" end="'.a:end.'"
+                \ contains=@'.group
+endfunction

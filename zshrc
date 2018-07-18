@@ -136,7 +136,12 @@ function posting() {
     vim $post/$file.md
 }
 function temp() {
-    vim -c 'set filetype=python'
+    if [ $# -eq 0 ]; then
+        args='python'
+    else
+        args=$1
+    fi
+    vim -c "set filetype=$args"
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
