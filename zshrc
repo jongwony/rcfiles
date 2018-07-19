@@ -170,6 +170,9 @@ export post="$HOME/github/private/flask_blog/pages/posts"
 
 # DEFAULT --defaults-group-suffix
 # export MYSQL_GROUP_SUFFIX="_name"
+#
+# DEFAULT --profile AWS
+# export AWS_PROFILE="name"
 
 #########
 # alias #
