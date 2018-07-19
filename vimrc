@@ -58,19 +58,18 @@ nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 
-" Version Control GIT
-au BufNewFile,BufRead *.*
-    \ set noswapfile |
-    \ set autoread
-
 au BufNewFile,BufRead *.html,*.css,*.js
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
     \ set nowrap
 
-au FocusGained,CursorHold,CursorMoved *.* checktime
-au BufEnter,CursorHoldI,CursorMovedI *.* update
+au BufNewFile,BufRead *.md
+    \ set noswapfile |
+    \ set autoread
+
+au FocusGained,CursorHold,CursorMoved *.md checktime
+au BufEnter,CursorHoldI,CursorMovedI *.md update
 
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
 au Filetype python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
