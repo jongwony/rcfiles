@@ -14,15 +14,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'shime/vim-livedown'
 Plugin 'junegunn/fzf'
 Plugin 'joshdick/onedark.vim'
-"Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-repeat'
 
 call vundle#end()
 filetype plugin indent on
-
-let python_highlight_all=1
-syntax on
-colorscheme onedark
 
 set nu
 set tabstop=4
@@ -38,9 +33,32 @@ set mouse=a
 set backspace=indent,eol,start
 set hlsearch
 
+syntax on
+colorscheme onedark
+
+" NERDTree
+let python_highlight_all=1
+let g:NERDTreeDirArrowExpandable = '>'
+let g:NERDTreeDirArrowCollapsible = 'v'
+let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
+map <C-n> :NERDTreeToggle<CR>
+
+" FZF
+map <C-p> :FZF<CR>
+
+" npm install -g livedown
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1
+let g:livedown_port = 1337
+let g:livedown_browser = "chrome"
+nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
+
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 
+" Version Control GIT
 au BufNewFile,BufRead *.*
     \ set noswapfile |
     \ set autoread
@@ -51,36 +69,11 @@ au BufNewFile,BufRead *.html,*.css,*.js
     \ set shiftwidth=2 |
     \ set nowrap
 
-au BufNewFile,BufRead *.md,*.markdown
-    \ set linespace=4 |
-    \ set filetype=markdown |
-    \ set nowrap
-
-" http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
-au Filetype python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
-
 au FocusGained,CursorHold,CursorMoved *.* checktime
 au BufEnter,CursorHoldI,CursorMovedI *.* update
 
-let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = 'v'
-let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
-map <C-n> :NERDTreeToggle<CR>
-
-" npm install -g livedown
-" should markdown preview get shown automatically upon opening markdown buffer
-let g:livedown_autorun = 0
-" should the browser window pop-up upon previewing
-let g:livedown_open = 1
-" the port on which Livedown server will run
-let g:livedown_port = 1337
-" the browser to use
-let g:livedown_browser = "chrome"
-nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
-
-nnoremap gb :Gblame<CR>
-
-map <C-p> :FZF<CR>
+" http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
+au Filetype python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
 
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
     let ft=toupper(a:filetype)
@@ -106,3 +99,4 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
                 \ start="'.a:start.'" end="'.a:end.'"
                 \ contains=@'.group
 endfunction
+

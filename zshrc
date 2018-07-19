@@ -2,6 +2,15 @@
 export PATH=$PATH:$HOME/bin:/usr/local/bin:$HOME/.local/bin
 export REPORTTIME=0
 
+# platform
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    platform='mac'
+fi
+
 # pyenv
 eval "$(pyenv init -)"
 export PYENV_VERSION='gvenv'
@@ -113,7 +122,11 @@ PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_
 # function #
 ############
 function ipy () {
-	MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
+    if [[ "$platform" == 'mac' ]]; then
+        MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
+    else
+        ipython "$@"
+    fi
 }
 function suipy () {
     sudo sh -c 'ipython "$@"'
@@ -161,7 +174,13 @@ export post="$HOME/github/private/flask_blog/pages/posts"
 #########
 
 # Application alias
-alias vi=vim
+if [[ $platform == 'mac' ]]; then
+    alias vim='mvim -v'
+    alias vi=vim
+else
+    alias vi=vim
+fi
+
 alias memo="vim $memo/`today`.md"
 
 # Bookmark
