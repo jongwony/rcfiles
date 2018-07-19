@@ -168,6 +168,8 @@ export me="$HOME/github/private"
 export company="$HOME/github/company"
 export post="$HOME/github/private/flask_blog/pages/posts"
 
+# DEFAULT --defaults-group-suffix
+# export MYSQL_GROUP_SUFFIX="_name"
 
 #########
 # alias #
