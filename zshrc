@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/bin:/usr/local/bin:$HOME/.local/bin
-export REPORTTIME=0
+export REPORTTIME=10
 
 # platform
 platform='unknown'
