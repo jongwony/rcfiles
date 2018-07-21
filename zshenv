@@ -57,6 +57,9 @@ function snip() {
 function sg() {
     ls -lSr "${1:-.}" | awk '{print $8,$9,$5}' | uniq -c -f2 | head -n "${2:-10}"
 }
+function scr() {
+    screencapture "$@" $scr/`current`.png
+}
 
 ###########
 # exports #
@@ -66,6 +69,7 @@ export snip="$HOME/Documents/snip"
 export me="$HOME/github/private"
 export company="$HOME/github/company"
 export post="$HOME/github/private/flask_blog/pages/posts"
+export scr="$HOME/Desktop"
 
 # DEFAULT --defaults-group-suffix ~/.my.cnf
 # export MYSQL_GROUP_SUFFIX="_name"
