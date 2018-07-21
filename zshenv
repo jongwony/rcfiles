@@ -46,37 +46,16 @@ function posting() {
     vim $post/$file.md
 }
 function temp() {
-    if [ $# -eq 0 ]; then
-        args='python'
-    else
-        args=$1
-    fi
-    vim -c "set filetype=$args"
+    vim -c "set filetype=${1:-python}"
 }
 function memo() {
-    if [ $# -eq 0 ]; then
-        filename="`today`.md"
-    else
-        filename="$1.md"
-    fi
-    vim "$memo/$filename.md"
+    vim "$memo/${1:-`today`}.md"
 }
 function snip() {
-    if [ $# -eq 0 ]; then
-        filename=`ls -t $snip | head -n 1`
-    else
-        filename=$1
-    fi
-    vim "$snip/$filename"
+    vim "$snip/${1:-`ls -t $snip | head -n1`}"
 }
 function sg() {
-    if [ -f "$2" ]; then
-        limits=$2
-    else
-        limits=10
-    fi
-
-    ls -lSr "$1" | awk '{print $8,$9,$5}' | uniq -c -f2 | head -n "$limits"
+    ls -lSr "${1:-.}" | awk '{print $8,$9,$5}' | uniq -c -f2 | head -n "${2:-10}"
 }
 
 ###########
@@ -88,10 +67,10 @@ export me="$HOME/github/private"
 export company="$HOME/github/company"
 export post="$HOME/github/private/flask_blog/pages/posts"
 
-# DEFAULT --defaults-group-suffix
+# DEFAULT --defaults-group-suffix ~/.my.cnf
 # export MYSQL_GROUP_SUFFIX="_name"
 #
-# DEFAULT --profile AWS
+# DEFAULT --profile ~/.aws/config
 # export AWS_PROFILE="name"
 
 #########
