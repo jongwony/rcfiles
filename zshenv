@@ -13,7 +13,6 @@ if [[ $platform == 'mac' ]]; then
     export PYENV_VERSION='gvenv'
 
     alias vim='mvim -v'
-    alias vi=vim
 fi
 
 ############
@@ -30,9 +29,6 @@ function suipy () {
     sudo sh -c "ipython $@"
 }
 function chpwd () { ls }
-function gbsize () {
-	ls -lSr "$1" | awk '{ printf "%s %s %s\n", $8, $9, $5 }' | uniq -c -f 2 | head -n "$2" | sed '1d'
-}
 function today () {
 	date +%Y%m%d
 }
@@ -73,6 +69,15 @@ function snip() {
     fi
     vim "$snip/$filename"
 }
+function sg() {
+    if [ -f "$2" ]; then
+        limits=$2
+    else
+        limits=10
+    fi
+
+    ls -lSr "$1" | awk '{print $8,$9,$5}' | uniq -c -f2 | head -n "$limits"
+}
 
 ###########
 # exports #
@@ -92,10 +97,8 @@ export post="$HOME/github/private/flask_blog/pages/posts"
 #########
 # alias #
 #########
-
-# Application alias
 alias vi=vim
+alias py=python
 
-# Bookmark
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
 
