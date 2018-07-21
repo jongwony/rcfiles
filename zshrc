@@ -1,23 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/bin:/usr/local/bin:$HOME/.local/bin
-export REPORTTIME=10
-
-# platform
-platform='unknown'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-    platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-    platform='mac'
-fi
-
-# pyenv
-eval "$(pyenv init -)"
-export PYENV_VERSION='gvenv'
-
-# export MPLBACKEND="TkAgg"
-# export NVM_DIR="$HOME/.nvm"
-# . "/usr/local/opt/nvm/nvm.sh"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -107,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # vim mode zsh
@@ -118,76 +101,10 @@ bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
 
-############
-# function #
-############
-function ipy () {
-    if [[ "$platform" == 'mac' ]]; then
-        MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
-    else
-        ipython "$@"
-    fi
-}
-function suipy () {
-    sudo sh -c 'ipython "$@"'
-}
-function chpwd () { ls }
-function gbsize () {
-	ls -lSr "$1" | awk '{ printf "%s %s %s\n", $8, $9, $5 }' | uniq -c -f 2 | head -n "$2" | sed '1d'
-}
-function today () {
-	date +%Y%m%d
-}
-function posting() {
-    file=`date +%Y-%m-%d_$1`
-    if [ ! -f $post/$file.md ]; then
-        echo "date: `date +%Y-%m-%d\ %H:%M:%S`" >> $post/$file.md
-        echo "layout: post" >> $post/$file.md
-        echo "title: $1" >> $post/$file.md
-        echo "tags: " >> $post/$file.md
-    fi
-    vim $post/$file.md
-}
-function temp() {
-    if [ $# -eq 0 ]; then
-        args='python'
-    else
-        args=$1
-    fi
-    vim -c "set filetype=$args"
-}
+export REPORTTIME=10
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export MPLBACKEND="TkAgg"
+# export NVM_DIR="$HOME/.nvm"
+# . "/usr/local/opt/nvm/nvm.sh"
 
-###########
-# exports #
-###########
-export memo="$HOME/Documents/md"
-export snip="$HOME/Documents/snip"
-export me="$HOME/github/private"
-export company="$HOME/github/company"
-export post="$HOME/github/private/flask_blog/pages/posts"
-
-# DEFAULT --defaults-group-suffix
-# export MYSQL_GROUP_SUFFIX="_name"
-#
-# DEFAULT --profile AWS
-# export AWS_PROFILE="name"
-
-#########
-# alias #
-#########
-
-# Application alias
-if [[ $platform == 'mac' ]]; then
-    alias vim='mvim -v'
-    alias vi=vim
-else
-    alias vi=vim
-fi
-
-alias memo="vim $memo/`today`.md"
-
-# Bookmark
-alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
 
