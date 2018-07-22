@@ -1,20 +1,3 @@
-# platform
-platform='unknown'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-    platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-    platform='mac'
-fi
-
-# pyenv
-if [[ $platform == 'mac' ]]; then
-    eval "$(pyenv init -)"
-    export PYENV_VERSION='gvenv'
-
-    alias vim='mvim -v'
-fi
-
 ############
 # function #
 ############

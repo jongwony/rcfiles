@@ -1,5 +1,24 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/bin:/usr/local/bin:$HOME/.local/bin
+export REPORTTIME=10
+
+# platform
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    platform='mac'
+fi
+
+# pyenv
+if [[ $platform == 'mac' ]]; then
+    eval "$(pyenv init -)"
+    export PYENV_VERSION='gvenv'
+
+    alias vim='mvim -v'
+fi
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -100,8 +119,6 @@ bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
-
-export REPORTTIME=10
 
 # export MPLBACKEND="TkAgg"
 # export NVM_DIR="$HOME/.nvm"
