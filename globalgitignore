@@ -5,7 +5,11 @@ venv/
 venv2/
 
 *.csv
-*.sqlite3
 *.zip
 *.tar
 *.log
+*.out
+*.sqlite3
+
+config.json
+local.config.js
