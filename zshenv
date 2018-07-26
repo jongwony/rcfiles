@@ -65,6 +65,7 @@ export scr="$HOME/Desktop"
 #########
 alias vi=vim
 alias py=python
+alias vmore='vim -u ~/.vimrc.more -"
 
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
 
