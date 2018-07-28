@@ -28,5 +28,4 @@ nmap ^V <C-F><C-G>
 
 " Horizental nowrap
 set nowrap
-set filetype=sql
 colorscheme onedark
