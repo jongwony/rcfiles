@@ -17,6 +17,8 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'tpope/vim-repeat'
 
 call vundle#end()
+
+" https://www.vim.org/scripts/script.php?script_id=974
 filetype plugin indent on
 
 set nu
