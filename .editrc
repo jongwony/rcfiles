@@ -1,0 +1,2 @@
+# https://stackoverflow.com/questions/2216471/how-to-get-vi-keybindings-to-work-in-mysql-client
+bind -v
