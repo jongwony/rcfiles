@@ -11,7 +11,7 @@ function ipy () {
 function suipy () {
     sudo sh -c "ipython $@"
 }
-function chpwd () { ls }
+function chpwd () { ls -G }
 function today () {
 	date +%Y%m%d
 }

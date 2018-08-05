@@ -2,3 +2,4 @@
 bind -v
 bind "^R" em-inc-search-prev
 bind "^F" em-inc-search-next
+bind "^I" rl_complete
