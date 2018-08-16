@@ -1,3 +1,9 @@
+" supress python3 warning
+" https://github.com/vim/vim/issues/3117#issuecomment-402622616
+if has('python3')
+    silent! python3 1
+endif
+
 set nocompatible
 filetype off
 
@@ -15,10 +21,9 @@ Plugin 'shime/vim-livedown'
 Plugin 'junegunn/fzf'
 Plugin 'joshdick/onedark.vim'
 Plugin 'tpope/vim-repeat'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
-
-" https://www.vim.org/scripts/script.php?script_id=974
 filetype plugin indent on
 
 set nu
@@ -37,6 +42,11 @@ set hlsearch
 
 syntax on
 colorscheme onedark
+
+" jedi-vim
+if has('python3')
+    let g:jedi#force_py_version=3
+endif
 
 " NERDTree
 let python_highlight_all=1
