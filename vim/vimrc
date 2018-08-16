@@ -22,8 +22,11 @@ Plugin 'junegunn/fzf'
 Plugin 'joshdick/onedark.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'w0rp/ale'
 
 call vundle#end()
+
+" https://www.vim.org/scripts/script.php?script_id=974
 filetype plugin indent on
 
 set nu
