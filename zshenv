@@ -2,7 +2,7 @@
 # function #
 ############
 function ipy () {
-    if [[ "$platform" == 'mac' ]]; then
+    if [ "$platform" == 'mac' ]; then
         MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
     else
         ipython "$@"
@@ -42,6 +42,33 @@ function sg() {
 }
 function scr() {
     screencapture "$@" $scr/`current`.png
+}
+function mktags() {
+    if [ "$platform" == 'mac' ]; then
+        if brew ls --versions ctags > /dev/null; then
+            CTAG=`brew --prefix`/bin/ctags
+        else
+            brew install ctags
+            CTAG=`brew --prefix`/bin/ctags
+        fi
+    else
+        CTAG=ctags
+    fi
+
+    case $1 in
+        "python2")
+            ret_code=`ctags --fields=+ailm --languages=python --python-kinds=-i -f tags . $(python -c 'import os,sys;print " ".join([x for x in sys.path if os.path.isdir(x)])')`
+        ;;
+        "python3")
+            ret_code=`ctags --fields=+ailm --languages=python --python-kinds=-i -f tags . $(python -c 'import os,sys;print(" ".join([x for x in sys.path if os.path.isdir(x)]))')`
+        ;;
+        *)
+            echo "Not implemented error $1"
+            ret_code=1
+        ;;
+    esac
+
+    return ret_code
 }
 
 ###########
