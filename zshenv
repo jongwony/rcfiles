@@ -1,8 +1,17 @@
 ############
 # function #
 ############
+function chpwd () {
+    if [[ "$platform" == 'mac' ]]; then
+        # autoenv like
+        pyenv shell ${PWD##*/}
+        ls -G
+    else
+        ls
+    fi
+}
 function ipy () {
-    if [ "$platform" == 'mac' ]; then
+    if [[ "$platform" == 'mac' ]]; then
         MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
     else
         ipython "$@"
@@ -11,7 +20,6 @@ function ipy () {
 function suipy () {
     sudo sh -c "ipython $@"
 }
-function chpwd () { ls -G }
 function today () {
 	date +%Y%m%d
 }
