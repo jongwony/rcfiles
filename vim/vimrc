@@ -46,11 +46,13 @@ set hlsearch
 syntax on
 colorscheme onedark
 
+" ale
+let b:ale_linters=['flake8']
+
 " jedi-vim
 if has('python3')
     let g:jedi#force_py_version=3
 endif
-
 " NERDTree
 let python_highlight_all=1
 let g:NERDTreeDirArrowExpandable = '>'
