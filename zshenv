@@ -44,7 +44,7 @@ function scr() {
     screencapture "$@" $scr/`current`.png
 }
 function mktags() {
-    if [ "$platform" == 'mac' ]; then
+    if [[ "$platform" == 'mac' ]]; then
         if brew ls --versions ctags > /dev/null; then
             CTAG=`brew --prefix`/bin/ctags
         else
@@ -57,18 +57,18 @@ function mktags() {
 
     case $1 in
         "python2")
-            ret_code=`ctags --fields=+ailm --languages=python --python-kinds=-i -f tags . $(python -c 'import os,sys;print " ".join([x for x in sys.path if os.path.isdir(x)])')`
+            $CTAG -R --fields=+l --languages=python --python-kinds=-i -f ./tags . $(python -c 'import os,sys;print " ".join([x for x in sys.path if os.path.isdir(x)])')
+            return 0
         ;;
         "python3")
-            ret_code=`ctags --fields=+ailm --languages=python --python-kinds=-i -f tags . $(python -c 'import os,sys;print(" ".join([x for x in sys.path if os.path.isdir(x)]))')`
+            $CTAG  -R --fields=+l --languages=python --python-kinds=-i -f ./tags . $(python -c 'import os,sys;print(" ".join([x for x in sys.path if os.path.isdir(x)]))')
+            return 0
         ;;
         *)
             echo "Not implemented error $1"
-            ret_code=1
+            return 1
         ;;
     esac
-
-    return ret_code
 }
 
 ###########
