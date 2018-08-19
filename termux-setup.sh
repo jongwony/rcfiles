@@ -5,6 +5,7 @@ pkg install ctags
 pkg install curl
 pkg install diffutils
 pkg install dnsutils
+pkg install gdb
 pkg install gem
 pkg install git
 pkg install man
@@ -13,6 +14,7 @@ pkg install parallel
 pkg install perl
 pkg install python
 pkg install ruby
+pkg install strace
 pkg install sqlite
 pkg install sqlite3
 pkg install termux-api
