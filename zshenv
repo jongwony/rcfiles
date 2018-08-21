@@ -4,9 +4,24 @@
 function chpwd () {
     if [[ "$platform" == 'mac' ]]; then
         # autoenv like
-        pyenv shell ${PWD##*/}
+        if [[ ! -z ${VIRTUAL_ENV+venv} ]]; then
+            deactivate
+        fi
+        if [[ -d venv ]]; then
+            . venv/bin/activate
+        else
+            pyenv shell ${PWD##*/}
+        fi
+
         ls -G
     else
+        if [[ ! -z ${VIRTUAL_ENV+venv} ]]; then
+            deactivate
+        fi
+        if [[ -d venv ]]; then
+            . venv/bin/activate
+        fi
+
         ls
     fi
 }
