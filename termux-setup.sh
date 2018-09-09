@@ -22,4 +22,10 @@ pkg install tmux
 pkg install vim
 pkg install vim-python
 pkg install zsh
+pkg install python-dev
+pkg install wget
+wget https://its-pointless.github.io/setup-pointless-repo.sh
+bash setup-pointless-repo.sh
+pkg install numpy scipy
+pip install pandas
 termux-storage-setup
