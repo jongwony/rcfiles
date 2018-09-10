@@ -101,7 +101,7 @@ export memo="$HOME/Documents/md"
 export snip="$HOME/Documents/snip"
 export me="$HOME/Documents/github/me"
 export company="$HOME/Documents/github/company"
-export post="$HOME/Documents/github/private/flask_blog/pages/posts"
+export post="$HOME/Documents/github/me/flask_blog/pages/posts"
 export scr="$HOME/Desktop"
 
 # DEFAULT --defaults-group-suffix ~/.my.cnf
