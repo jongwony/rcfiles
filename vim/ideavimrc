@@ -5,6 +5,7 @@ set clipboard=unnamed
 set scrolloff=5
 set showmode
 set surround
+set multiple-cursors
 set keep-english-in-normal-and-restore-in-insert
 
 nnoremap [c :action VcsShowPrevChangeMarker<cr>
