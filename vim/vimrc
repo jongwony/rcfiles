@@ -10,7 +10,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
@@ -24,6 +23,8 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'w0rp/ale'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 
@@ -45,6 +46,8 @@ set backspace=indent,eol,start
 set hlsearch
 set cursorcolumn
 set cursorline
+set shell=zsh\ -l
+set nowrap
 
 syntax on
 colorscheme onedark
@@ -56,6 +59,7 @@ let b:ale_linters=['flake8']
 if has('python3')
     let g:jedi#force_py_version=3
 endif
+
 " NERDTree
 let python_highlight_all=1
 let g:NERDTreeDirArrowExpandable = '>'
@@ -64,7 +68,7 @@ let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
 map <C-1> :NERDTreeToggle<CR>
 
 " FZF
-map <C-p> :FZF<CR>
+map <C-o> :FZF<CR>
 
 " npm install -g livedown
 " should markdown preview get shown automatically upon opening markdown buffer
@@ -81,8 +85,7 @@ au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 au BufNewFile,BufRead *.html,*.css,*.js
     \ set tabstop=2 |
     \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set nowrap
+    \ set shiftwidth=2
 
 au BufNewFile,BufRead *.md
     \ set noswapfile |
@@ -91,6 +94,8 @@ au BufNewFile,BufRead *.md
 au FocusGained,CursorHold,CursorMoved *.md checktime
 au BufEnter,CursorHoldI,CursorMovedI *.md update
 
+au FileType python set equalprg=autopep8\ -
+au FileType sql set equalprg=sqlformat\ -r\ -k\ upper\ -
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
 au Filetype python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
 
