@@ -10,6 +10,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
@@ -60,7 +61,7 @@ let python_highlight_all=1
 let g:NERDTreeDirArrowExpandable = '>'
 let g:NERDTreeDirArrowCollapsible = 'v'
 let NerdTreeIgnore=['\.pyc$', '\~$', 'node_modules']
-map <C-n> :NERDTreeToggle<CR>
+map <C-1> :NERDTreeToggle<CR>
 
 " FZF
 map <C-p> :FZF<CR>
