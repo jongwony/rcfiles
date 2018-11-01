@@ -79,6 +79,9 @@ let g:livedown_port = 1337
 let g:livedown_browser = "chrome"
 nmap gm :LivedownToggle<CR> :!open -a Google\ Chrome http://localhost:1337<CR>
 
+" copy all and quit
+nmap cpq :%y+ <Bar> :q!<CR>
+
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 
