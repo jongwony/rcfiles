@@ -63,36 +63,6 @@ function snip() {
 function sg() {
     ls -lSr "${1:-.}" | awk '{print $8,$9,$5}' | uniq -c -f2 | head -n "${2:-10}"
 }
-function scr() {
-    screencapture "$@" $scr/`current`.png
-}
-function mktags() {
-    if [[ "$platform" == 'mac' ]]; then
-        if brew ls --versions ctags > /dev/null; then
-            CTAG=`brew --prefix`/bin/ctags
-        else
-            brew install ctags
-            CTAG=`brew --prefix`/bin/ctags
-        fi
-    else
-        CTAG=ctags
-    fi
-
-    case $1 in
-        "python2")
-            $CTAG -R --fields=+l --languages=python --python-kinds=-i -f ./tags . $(python -c 'import os,sys;print " ".join([x for x in sys.path if os.path.isdir(x)])')
-            return 0
-        ;;
-        "python3")
-            $CTAG  -R --fields=+l --languages=python --python-kinds=-i -f ./tags . $(python -c 'import os,sys;print(" ".join([x for x in sys.path if os.path.isdir(x)]))')
-            return 0
-        ;;
-        *)
-            echo "Not implemented error $1"
-            return 1
-        ;;
-    esac
-}
 
 ###########
 # exports #
