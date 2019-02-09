@@ -113,14 +113,8 @@ fi
 
 if [[ $platform == 'mac' ]]; then
     # pyenv
-    eval "$(pyenv init -)"
     export PYENV_VERSION='gvenv'
-
     # macvim
     alias vim='mvim -v'
-
-    # node
-    export NVM_DIR="$HOME/.nvm"
-    . "/usr/local/opt/nvm/nvm.sh"
 fi
 
