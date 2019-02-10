@@ -113,6 +113,7 @@ fi
 
 if [[ $platform == 'mac' ]]; then
     # pyenv
+    eval "$(pyenv init - --no-rehash zsh)"
     export PYENV_VERSION='gvenv'
     # macvim
     alias vim='mvim -v'
