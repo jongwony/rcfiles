@@ -37,11 +37,10 @@ function sg() {
 ###########
 # exports #
 ###########
-export memo="$HOME/Documents/md"
+export company="$HOME/github/company"
 export me="$HOME/Documents/github/me"
 export snip="$me/bio/files"
-export company="$HOME/github/company"
-export post="$HOME/Documents/github/me/flask_blog/pages/posts"
+export post="$me/flask_blog/pages/posts"
 
 # DEFAULT --defaults-group-suffix ~/.my.cnf
 # export MYSQL_GROUP_SUFFIX="_name"
