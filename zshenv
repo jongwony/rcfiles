@@ -37,10 +37,10 @@ function sg() {
 ###########
 # exports #
 ###########
-export company="$HOME/github/company"
 export me="$HOME/Documents/github/me"
 export snip="$me/bio/files"
-export post="$me/flask_blog/pages/posts"
+export company="$HOME/github/company"
+export post="$HOME/Documents/github/me/flask_blog/pages/posts"
 
 # DEFAULT --defaults-group-suffix ~/.my.cnf
 # export MYSQL_GROUP_SUFFIX="_name"
@@ -56,4 +56,4 @@ alias py=python
 alias vmore='vim -u ~/.vimrc.more -'
 alias gt='google_trans --clipboard'
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
-
+alias bio=biocli
