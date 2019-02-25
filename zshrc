@@ -6,7 +6,7 @@ export REPORTTIME=1
 export ZSH=$HOME/.oh-my-zsh
 
 # Python interactive console autocompletion
-export PYTHONPATH=$HOME/.local/lib/python3.7/site-packages/
+export PYTHONPATH=/usr/local/bin:/usr/local/Cellar
 # export PYTHONSTARTUP=/Users/jongwon/github/private/personal/myCloud/snippet/Sierra/.pythonrc
 
 # Set name of the theme to load. Optionally, if you set this to "random"
