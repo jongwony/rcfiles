@@ -15,6 +15,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'joshdick/onedark.vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'vim-scripts/indentpython.vim'
@@ -22,6 +23,8 @@ Plugin 'tmhedberg/SimpylFold'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'ferrine/md-img-paste.vim'
+Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on
@@ -46,6 +49,13 @@ set nowrap
 set splitbelow
 set splitright
 set completeopt=longest,menuone
+set spell spelllang=en_us
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -95,6 +105,11 @@ au BufNewFile,BufRead *.md
 
 au FocusGained,CursorHold,CursorMoved *.md checktime
 au BufEnter,CursorHoldI,CursorMovedI *.md update
+
+au FileType markdown map <C-p> :call mdip#MarkdownClipboardImage()<CR>
+" there are some defaults for image directory and image name, you can change them
+let g:mdip_imgdir = '__images'
+
 
 au FileType python set equalprg=autopep8\ -
 au FileType sql set equalprg=sqlformat\ -r\ -k\ upper\ -
