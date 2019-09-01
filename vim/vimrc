@@ -91,6 +91,8 @@ map <C-]> :FZF<CR>
 " copy all and quit
 nmap cpq :%y+ <Bar> :q!<CR>
 
+highlight clear SpellBad
+highlight SpellBad cterm=underline
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile,CursorMoved * match BadWhitespace /\s\+$/
 
