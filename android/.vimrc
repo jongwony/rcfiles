@@ -5,7 +5,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-surrounded'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'terryma/vim-multiple-cursors'
@@ -25,6 +26,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'ferrine/md-img-paste.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -67,7 +69,6 @@ set foldmethod=indent
 set foldlevel=99
 
 let g:ycm_autoclose_preview_window_after_completion=1
-nmap K :YcmCompleter GetDoc<CR>
 
 let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules']
 map <C-t> :NERDTreeToggle<CR>
@@ -89,32 +90,9 @@ au BufNewFile,BufRead *.md
 	\ set autoread
 au FocusGained,CursorHold,CursorMoved *.md checktime
 au BufEnter,CursorHoldI,CursorMovedI *md update
-au FileType markdown map <C-p> :call mdip#MarkdownClipboardImage()<CR>
-let g:mdip_imgdir='__images'
-
 au FileType python set equalprg=autopep8\ -
 au FileType sql set equalprg=sqlformat\ -r\ -k\ upper\ -
-au FileType python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
 
-function! TextEnableCodeSnip(filetype,start, end, textSnipHl) abort
-	let ft=toupper(a:filetype)
-	let group='textGroup' ft
-	if exists('b:current_syntax')
-		let s:current_syntax=b:current_syntax
-		unlet b:current_syntax
-	endif
-	execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
-	try
-		execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
-	catch
-	endtry
-	if exists('s:current_syntax')
-		let b:current_syntax=s:current_syntax
-	else
-		unlet b:current_syntax
-	endif
-	execute 'syntax region textSnip'.ft.'
-				\ matchgroup='.a:textSnipHl.'
-				\ start="'.a:start.'" end="'.a:end.'"
-				\ contains=@'.group
-endfunction
+source .vimrc_md_img_paste
+source .vimrc_jedi
+source .vimrc_special_comment

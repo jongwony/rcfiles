@@ -1,0 +1,4 @@
+" Plugin 'ferrine/md-img-paste.vim'
+au FileType markdown map <C-p> :call mdip#MarkdownClipboardImage()<CR>
+let g:mdip_imgdir='__images'
+
