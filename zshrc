@@ -6,7 +6,7 @@ export REPORTTIME=1
 export ZSH=$HOME/.oh-my-zsh
 
 # Python interactive console autocompletion
-export PYTHONPATH=/usr/local/bin:/usr/local/Cellar
+export PYTHONPATH=/usr/local/bin:/usr/local/Cellar:$HOME/.pyenv/shims
 # export PYTHONSTARTUP=/Users/jongwon/github/private/personal/myCloud/snippet/Sierra/.pythonrc
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -101,22 +101,14 @@ bindkey -v
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
-PROMPT='%{$fg_bold[white]%}%D{%H:%M:%S}%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
+PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)${ret_status}%{$reset_color%}'
 
-# platform
-platform='unknown'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-    platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-    platform='mac'
-fi
+eval "$(pyenv init -)"
+# source ~/venv/bin/activate
+# export VIRTUAL_ENV=$HOME/venv
 
-if [[ $platform == 'mac' ]]; then
-    # pyenv
-    eval "$(pyenv init - --no-rehash zsh)"
-    export PYENV_VERSION='gvenv'
-    # macvim
-    alias vim='mvim -v'
-fi
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jongwony/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jongwony/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jongwony/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jongwony/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

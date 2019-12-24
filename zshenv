@@ -2,18 +2,10 @@
 # function #
 ############
 function chpwd () {
-    if [[ "$platform" == 'mac' ]]; then
-        ls -Gtr
-    else
-        ls -tr
-    fi
+    ls -G -t -r
 }
 function ipy () {
-    if [[ "$platform" == 'mac' ]]; then
-        MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
-    else
-        ipython "$@"
-    fi
+    MPLBACKEND="module://itermplot" ITERMPLOT=rv ipython "$@"
 }
 function suipy () {
     sudo sh -c "ipython $@"
@@ -51,8 +43,8 @@ export post="$me/flask_blog/pages/posts"
 #########
 # alias #
 #########
+alias vim='vim -v'
 alias vi=vim
-alias py=python
 alias vmore='vim -u ~/.vimrc.more -'
 alias gt='google_trans --clipboard'
 alias pstop="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -rk1 | head"
