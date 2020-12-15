@@ -42,6 +42,8 @@ set clipboard=unnamed
 set mouse=a
 set backspace=indent,eol,start
 set hlsearch
+set ignorecase
+set incsearch
 set cursorcolumn
 set cursorline
 set shell=zsh\ -l
